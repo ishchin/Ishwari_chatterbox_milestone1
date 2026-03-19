@@ -2,22 +2,91 @@
 <html>
 <head>
     <title>Chatterbox</title>
-    <link rel="stylesheet" href="/static/style.css">
-
+    <link rel="stylesheet" href="/static/style.css?v=4">
 </head>
 
 <body>
-<div class="chat-app">
-    <div class="header">Chatterbox</div>
 
-    <div id="messages" class="chat-box"></div>
+<div id="loginScreen" class="login-screen">
+    <div class="login-card">
+        <div class="login-title">Welcome to Chatterbox</div>
+        <div class="login-subtitle">Join a room to start chatting</div>
 
-    <div class="input-area">
-        <input id="messageInput" placeholder="Type message">
-        <button id="sendBtn">Send</button>
+        <label class="login-label">Name</label>
+        <input id="loginName" class="login-input" placeholder="Enter your name" autocomplete="off">
+
+        <label class="login-label">Password</label>
+        <input id="loginPassword" class="login-input" type="password" placeholder="Just for demo" autocomplete="off">
+
+        <label class="login-label">Room</label>
+        <select id="loginRoomSelect" class="login-input">
+            <option value="general" selected>General</option>
+            <option value="tech">Tech</option>
+            <option value="fun">Fun</option>
+        </select>
+        <input id="loginRoom" class="login-input" placeholder="Or type a custom room name" autocomplete="off">
+
+        <button id="loginBtn" class="login-btn" type="button">Join chat</button>
+        <div id="loginHint" class="login-hint"></div>
     </div>
 </div>
 
-<script src="/static/script.js"></script>
+<div id="appShell" class="app-shell" style="display:none;">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="brand">Chatterbox</div>
+            <div id="roomLabel" class="room-label">Room: -</div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-title">Rooms</div>
+            <div id="roomsList" class="rooms-list"></div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-title">Participants</div>
+            <div id="userCount" class="user-count">0 online</div>
+            <div id="userList" class="user-list"></div>
+        </div>
+    </aside>
+
+    <main class="chat-container">
+        <div class="header">
+            <div class="title" id="chatTitle">💬 Chatterbox Group</div>
+            <div class="header-actions">
+                <button id="clearChatBtn" class="leave-btn secondary" type="button">Clear chat</button>
+                <button id="leaveBtn" class="leave-btn" type="button">Leave</button>
+            </div>
+        </div>
+
+        <div id="connStatus" class="conn-status">Disconnected</div>
+
+        <div class="search-bar">
+            <input id="searchInput" placeholder="Search messages" autocomplete="off">
+        </div>
+
+        <div id="pinnedArea" class="pinned-area"></div>
+
+        <div id="messages" class="messages"></div>
+
+        <div id="typingIndicator" class="typing-indicator"></div>
+
+        <div class="input-area">
+            <input id="messageInput" placeholder="Type a message" autocomplete="off">
+            <button id="attachBtn" class="emoji-btn" type="button" title="Attach file">📎</button>
+            <button id="cameraBtn" class="emoji-btn" type="button" title="Camera">📷</button>
+            <button id="audioBtn" class="emoji-btn" type="button" title="Voice note">🎤</button>
+            <button id="emojiBtn" class="emoji-btn" type="button" title="Emoji">😀</button>
+            <button id="sendBtn" disabled>Send</button>
+        </div>
+
+        <div id="emojiPanel" class="emoji-panel" aria-hidden="true"></div>
+        <input id="fileInput" type="file" style="display:none;">
+        <input id="cameraInput" type="file" accept="image/*" capture="environment" style="display:none;">
+    </main>
+</div>
+
+<script src="/static/script.js?v=4"></script>
+
 </body>
 </html>
